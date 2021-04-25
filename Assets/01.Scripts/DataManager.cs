@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 public class DataManager : MonoBehaviour
 {
@@ -43,5 +44,5 @@ public class DataManager : MonoBehaviour
     }
     #endregion
 
-    
+    public BigInteger gold;
 }

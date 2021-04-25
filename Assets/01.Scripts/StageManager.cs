@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
     Vector3 RandomPos;
     float timer = 0.5f;
 
-    float killReward;
+    public float killReward;
     public int stageLevel = 1;
 
     void SpawnEnemy()
@@ -29,6 +29,11 @@ public class StageManager : MonoBehaviour
             enemy_L.Add(enemy);
             timer = 0.5f;
         }
+    }
+
+    public void StageLevelUP()
+    {
+        stageLevel++;
     }
 
     void Start()
