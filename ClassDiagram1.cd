@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Comment CommentText="1. 변수&#xD;&#xA;    - 레벨업 비용&#xD;&#xA;    - 플레이어 레벨&#xD;&#xA;    - 공격력&#xD;&#xA;    - 터치 딜레이 (미사용)&#xD;&#xA;2. 함수&#xD;&#xA;    - 터치 시 공격 (미구현)&#xD;&#xA;    - 클릭 시 레벨업&#xD;&#xA;    - 시작 시 레벨업 비용과 공격력 초기화&#xD;&#xA;3. 그 외&#xD;&#xA;    X&#xD;&#xA;">
+    <Position X="0.542" Y="4.403" Height="1.878" Width="2.967" />
+  </Comment>
+  <Comment CommentText="1. 변수&#xD;&#xA;    - 적 체력&#xD;&#xA;    - 적 이동속도&#xD;&#xA;    - 처치해야 할 적의 수&#xD;&#xA;2. 함수 &#xD;&#xA;    - 적 이동&#xD;&#xA;    - 적 데미지 처리&#xD;&#xA;3. 그 외&#xD;&#xA;    - 적 체력바 (미구현)">
+    <Position X="7.023" Y="3.609" Height="1.656" Width="3.238" />
+  </Comment>
+  <Comment CommentText="1. 변수&#xD;&#xA;    - 돈&#xD;&#xA;2. 함수&#xD;&#xA;    X&#xD;&#xA;3. 그 외&#xD;&#xA;    - 싱글톤">
+    <Position X="3.762" Y="2.64" Height="1.161" Width="2.985" />
+  </Comment>
+  <Comment CommentText="1. 변수&#xD;&#xA;    X&#xD;&#xA;2. 함수&#xD;&#xA;    - JSON 파일 생성 및 저장 (로드 미구현)&#xD;&#xA;3. 그 외&#xD;&#xA;    X">
+    <Position X="10.514" Y="3.022" Height="1.087" Width="2.975" />
+  </Comment>
+  <Comment CommentText="1. 변수&#xD;&#xA;    - 돈&#xD;&#xA;    - 플레이어 레벨&#xD;&#xA;    - 스테이지 레벨&#xD;&#xA;2. 함수&#xD;&#xA;    X&#xD;&#xA;3. 그 외&#xD;&#xA;    X">
+    <Position X="13.779" Y="2.191" Height="1.393" Width="1.711" />
+  </Comment>
+  <Comment CommentText="1. 변수&#xD;&#xA;    - 처치 보상&#xD;&#xA;    - 스테이지 레벨&#xD;&#xA;    - 랜덤 Y 좌표&#xD;&#xA;    - 적 소환 딜레이&#xD;&#xA;2. 함수&#xD;&#xA;    - 적 소환&#xD;&#xA;    - 스테이지 레벨업&#xD;&#xA;    - 처치 보상 초기화&#xD;&#xA;3. 그 외&#xD;&#xA;    X">
+    <Position X="15.765" Y="3.81" Height="1.941" Width="2.227" />
+  </Comment>
+  <Comment CommentText="그 외 미구현&#xD;&#xA;    - 스테이지 보스&#xD;&#xA;    - UI Manager&#xD;&#xA;    - Coworker(동료)&#xD;&#xA;    - 게임 내 UI">
+    <Position X="18.258" Y="0.5" Height="0.993" Width="1.626" />
+  </Comment>
+  <Class Name="Clicker">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAAAAAAAAAQAABAAEgCAAAABBAAAABCAI=</HashCode>
+      <FileName>Assets\01.Scripts\Clicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataManager">
+    <Position X="3.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\01.Scripts\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="7" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACIAAAAAAAAAQAAAAAAAAQCAAABIAAAACAA=</HashCode>
+      <FileName>Assets\01.Scripts\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameData">
+    <Position X="10.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAACQAAQAAAAAACAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\01.Scripts\GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerData">
+    <Position X="13.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAQAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\01.Scripts\PlayerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StageManager">
+    <Position X="15.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACACAAAAAAAAAAAAAAAAAABAAAIAAAAYAAI=</HashCode>
+      <FileName>Assets\01.Scripts\StageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

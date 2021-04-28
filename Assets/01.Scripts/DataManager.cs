@@ -44,5 +44,5 @@ public class DataManager : MonoBehaviour
     }
     #endregion
 
-    public BigInteger gold;
+    public BigInteger gold = 248248248248248;
 }

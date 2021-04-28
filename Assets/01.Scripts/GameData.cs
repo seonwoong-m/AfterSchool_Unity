@@ -6,12 +6,12 @@ using System.IO;
 
 public class GameData : MonoBehaviour
 {
-    PlayerData myData;
+    public PlayerData myData;
     StageManager SM;
     Clicker clicker;
     DataManager dataM;
 
-    void Start()
+    public void Start()
     {
         SaveData();
     }

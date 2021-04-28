@@ -6,7 +6,7 @@ using System;
 public class StageManager : MonoBehaviour
 {
     public GameObject enemy;
-    public List<GameObject> enemy_L = new List<GameObject>(5);
+    
 
     float RandomY;
     Vector3 RandomPos;
@@ -26,7 +26,6 @@ public class StageManager : MonoBehaviour
         if(timer <= 0.0f)
         {
             Instantiate(enemy, RandomPos, Quaternion.identity);
-            enemy_L.Add(enemy);
             timer = 0.5f;
         }
     }
