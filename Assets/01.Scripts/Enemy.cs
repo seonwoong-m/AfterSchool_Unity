@@ -1,72 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Numerics;
+using System.Numerics;   
 
 public class Enemy : MonoBehaviour
 {
-    StageManager SM;
-    Clicker clicker;
-    DataManager dataM;
+    StageManager smCS;
+    Clicker clickerCS;
+    DataManager dataCS;
+    Enemy enemyCS;
 
-    public float speed = 10f;
+    public float speed = 0f;
     public float hp;
-    public int enemyCount = 10;
-
-   
+    public int enemyCount = 10;   
+    float rHP;
 
     void Start()
     {
-        SM = GameObject.Find("StageManager").GetComponent<StageManager>();
-        hp = SM.killReward * 2;
+        smCS = GameObject.Find("StageManager").GetComponent<StageManager>();
+        hp = Random.Range((smCS.killReward * 2), (smCS.killReward * 4));
+        speed = Random.Range(3, 5);
     }
 
     void Update()
     {
-        SM = GameObject.Find("StageManager").GetComponent<StageManager>();
-        dataM = GameObject.Find("DataManager").GetComponent<DataManager>();
-        clicker = GameObject.Find("Clicker").GetComponent<Clicker>();
+
+        smCS = GameObject.Find("StageManager").GetComponent<StageManager>();
+        dataCS = GameObject.Find("DataManager").GetComponent<DataManager>();
+        clickerCS = GameObject.Find("Clicker").GetComponent<Clicker>();
+        
 
         gameObject.transform.Translate(UnityEngine.Vector3.left * speed * Time.deltaTime, Space.World);
 
         if(gameObject.transform.position.x <= -10f)
         {
             Destroy(this.gameObject);
-#if UNITY_EDITOR
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-            dataM.gold += 248248248248248248;
-#endif
-            clicker.gold.text = clicker.Money((BigInteger)dataM.gold, clicker.gold);
-}
+            smCS.enemyList.RemoveAt(0);
+            clickerCS.gold.text = clickerCS.Money((BigInteger)dataCS.gold, clickerCS.gold);
+        }
     }
 
-    public void Damaged(List<GameObject> enemy_L)
+    public void Damaged(GameObject enemy)
     {
-        clicker = GameObject.Find("Clicker").GetComponent<Clicker>();
-        dataM = GameObject.Find("DataManager").GetComponent<DataManager>();
-        SM = GameObject.Find("StageManager").GetComponent<StageManager>();
+        clickerCS = GameObject.Find("Clicker").GetComponent<Clicker>();
+        dataCS = GameObject.Find("DataManager").GetComponent<DataManager>();
+        smCS = GameObject.Find("StageManager").GetComponent<StageManager>();
 
-        hp -= clicker.power;
+        enemy.GetComponent<Enemy>().hp -= clickerCS.power;
 
-        if(hp <= 0)
+        if(enemy.GetComponent<Enemy>().hp <= 0)
         {
             Destroy(this.gameObject);
-            enemy_L.RemoveAt(0);
             enemyCount--;
-            dataM.gold += (BigInteger)SM.killReward;
+            smCS.enemyList.RemoveAt(0);
+            dataCS.gold += (BigInteger)smCS.killReward;
         }
 
         if(enemyCount == 0)
         {
             enemyCount = 10;
-            SM.StageLevelUP();
+            smCS.StageLevelUP();
         }
     }
-
 }

@@ -11,27 +11,29 @@ public class Clicker : MonoBehaviour
     public List<GameObject> enemy_L;
 
     public GameObject destroyEffect;
+    public GameObject targeting;
     public Text levelUPBtn;
     public Text gold;
     public Text playerLevel_T;
     public Text playerPower;
-    DataManager dataM;
-    StageManager SM;
-    Enemy enemy;
+    DataManager dataCS;
+    StageManager smCS;
+    Enemy enemyCS;
 
     public float levelUpCost;
     public float power;
     float touchDelay = 0.1f;
     public int playerLevel = 1;
+    public float shortDis;
 
-    void Start()         
+    void Start()
     {
-        dataM = GameObject.Find("DataManager").GetComponent<DataManager>();
+        dataCS = GameObject.Find("DataManager").GetComponent<DataManager>();
 
         levelUpCost = (float)(50 * (Math.Pow(1.07, playerLevel - 1)));
         power = levelUpCost * 0.4f;
         levelUPBtn.text = $"LevelUp Cost : {(BigInteger)levelUpCost}";
-        gold.text = Money((BigInteger)dataM.gold, gold);
+        gold.text = Money((BigInteger)dataCS.gold, gold);
         playerLevel_T.text = $"Lv. : {(BigInteger)playerLevel}";
         playerPower.text = $"PlayerPower : {(BigInteger)power}";
         touchDelay = 0f;
@@ -39,40 +41,43 @@ public class Clicker : MonoBehaviour
 
     public void LevelUp()
     {
-            dataM = GameObject.Find("DataManager").GetComponent<DataManager>();
+        dataCS = GameObject.Find("DataManager").GetComponent<DataManager>();
 
-            if ((float)dataM.gold >= levelUpCost)
-            {
-                dataM.gold -= (BigInteger)levelUpCost;
-                playerLevel += 1;
-                Debug.Log((int)playerLevel);
-            }
+        if ((float)dataCS.gold >= levelUpCost)
+        {
+            dataCS.gold -= (BigInteger)levelUpCost;
+            playerLevel += 1;
+            Debug.Log((int)playerLevel);
+        }
 
 
 
-            levelUpCost = (float)(50 * (Math.Pow(1.07f, playerLevel - 1)));
-            power = levelUpCost * 0.4f;
-            levelUPBtn.text = $"LevelUp Cost : {(BigInteger)levelUpCost}";
-            gold.text = Money((BigInteger)dataM.gold, gold);
-            playerLevel_T.text = $"Lv. {(BigInteger)playerLevel}";
-            playerPower.text = $"Power : {(BigInteger)power}";
+        levelUpCost = (float)(50 * (Math.Pow(1.07f, playerLevel - 1)));
+        power = levelUpCost * 0.4f;
+        levelUPBtn.text = $"LevelUp Cost : {(BigInteger)levelUpCost}";
+        gold.text = Money((BigInteger)dataCS.gold, gold);
+        playerLevel_T.text = $"Lv. {(BigInteger)playerLevel}";
+        playerPower.text = $"Power : {(BigInteger)power}";
     }
 
     public void OnClickAtk()
     {
-        enemy_L = new List<GameObject>();
-        SM = GameObject.Find("StageManager").GetComponent<StageManager>();
-        enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
+        smCS = GameObject.Find("StageManager").GetComponent<StageManager>();
+        enemyCS = GameObject.Find("Enemy").GetComponent<Enemy>();
 
-        if (enemy_L[0] == null)
+        shortDis = UnityEngine.Vector3.Distance(transform.position, smCS.enemyList[0].transform.position);
+   
+        foreach (GameObject found in smCS.enemyList)
         {
-            SM.enemy = enemy_L[0];
+            float distance = UnityEngine.Vector3.Distance(transform.position, found.transform.position);
+            if (distance < shortDis)
+            {
+                targeting = found;
+                shortDis = distance;
+            }
         }
 
-        if (SM.enemy == enemy_L[0])
-        {
-            enemy.Damaged(enemy_L);
-        }
+        targeting.GetComponent<Enemy>().Damaged(targeting);
     }
 
     public string Money(BigInteger num, Text text)

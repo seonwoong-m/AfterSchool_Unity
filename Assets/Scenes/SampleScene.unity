@@ -888,6 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy_L: []
   destroyEffect: {fileID: 5703599403038042337, guid: a7233a12b3963c544bb6bbe80bbc569a, type: 3}
+  targeting: {fileID: 0}
   levelUPBtn: {fileID: 419744656}
   gold: {fileID: 990068333}
   playerLevel_T: {fileID: 1364263444}
@@ -895,6 +896,7 @@ MonoBehaviour:
   levelUpCost: 0
   power: 0
   playerLevel: 1
+  shortDis: 0
 --- !u!1 &1266226550
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +908,7 @@ GameObject:
   - component: {fileID: 1266226552}
   - component: {fileID: 1266226551}
   m_Layer: 0
-  m_Name: 5-59919_beautiful-modern-art-wide-enchanted-forest-fantasy-art
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1550,6 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5703599403038042337, guid: a7233a12b3963c544bb6bbe80bbc569a, type: 3}
+  enemyList: []
   killReward: 0
   stageLevel: 1
 --- !u!4 &2108174555
